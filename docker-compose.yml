@@ -1,0 +1,38 @@
+version: "1"
+
+networks:
+  ingSoft:
+    external: true 
+
+services:
+  mysql-db:
+    image: mysql:latest
+    container_name: servicedesk_DB
+    volumes:
+      - mysql_data:/var/lib/mysqlServiceDesk
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "3306:3306"
+    networks:
+      - ingSoft
+
+  backend:
+    build: .
+    container_name: webApp
+    env_file: .env
+    restart: always
+    volumes: 
+      - .:/AppWeb
+    depends_on:
+      - mysql-db
+    expose:
+      - 8000
+    ports:
+      - "8000:8000"
+    command: ["python" , "manage.py" , "runserver" , "0.0.0.0:8000"]
+    networks:
+      - ingSoft
+
+volumes:
+  mysql_data:
