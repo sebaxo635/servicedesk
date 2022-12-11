@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link  rel="stylesheet" href="{%static '/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-2">
+      <img class="d-block mx-auto mb-4 " src="{%static '/image/linsem.png' %}" alt="" width="80" height="85">
+      
+      <div class="container-fluid p-2">
+        
+        <ul class="navbar-nav  me-auto mb-2 mb-md-0">
+            <li class="nav-item h3 p-2">
+            <a class="nav-link h1 " href="{% url 'preguntas' %}">Home</a>
+            </li>
+            <li class="nav-item h3 p-2 ">
+              <a class="nav-link "  href="{% url 'registro' %}">Registro</a>
+            </li>
+            <li class="nav-item h3 p-2">
+              <a class="nav-link" href="{% url 'ticket mantencion' %}">Mantencion</a>
+            </li>
+            <li class="nav-item h3 p-2">
+              <a class="nav-link" href="{% url 'ticket reserva' %}">Reserva</a>
+            </li>
+            <li class="nav-item h3 p-2">
+              <a class="nav-link" href="{% url 'retiro' %}">Retiro</a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+
+    <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2022 - 2023 Service Desk</p>
+
+    </footer>
+</body>
+</html>
+
+
+
